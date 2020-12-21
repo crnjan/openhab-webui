@@ -1,3 +1,5 @@
+import './compatibility'
+
 import api from './api'
 import sse from './sse'
 import media from './media'
