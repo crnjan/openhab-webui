@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
@@ -11,7 +11,7 @@
 
   <groupId>org.openhab.ui</groupId>
   <artifactId>org.openhab.ui.reactor</artifactId>
-  <version>3.0.0-SNAPSHOT</version>
+  <version>3.1.0-SNAPSHOT</version>
 
   <packaging>pom</packaging>
 
@@ -161,7 +161,7 @@ Import-Package: \\
           <version>${bnd.version}</version>
           <configuration>
             <failOnChanges>false</failOnChanges>
-            <bndruns></bndruns>
+            <bndruns/>
           </configuration>
           <executions>
             <execution>
@@ -358,7 +358,7 @@ Import-Package: \\
             </excludes>
             <useDefaultExcludes>true</useDefaultExcludes>
             <properties>
-              <year>2020</year>
+              <year>2021</year>
             </properties>
             <encoding>UTF-8</encoding>
           </configuration>
@@ -391,7 +391,7 @@ Import-Package: \\
                     </goals>
                   </pluginExecutionFilter>
                   <action>
-                    <ignore></ignore>
+                    <ignore/>
                   </action>
                 </pluginExecution>
                 <pluginExecution>
@@ -404,7 +404,7 @@ Import-Package: \\
                     </goals>
                   </pluginExecutionFilter>
                   <action>
-                    <ignore></ignore>
+                    <ignore/>
                   </action>
                 </pluginExecution>
               </pluginExecutions>
