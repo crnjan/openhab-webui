@@ -12,7 +12,9 @@
 
 <script>
 import mixin from '../widget-mixin'
+
 import 'echarts/lib/chart/gauge'
+import 'echarts/lib/chart/pie'
 
 import ECharts from 'vue-echarts/components/ECharts'
 import { OhChartDefinition } from '@/assets/definitions/widgets/chart/page'
@@ -33,7 +35,7 @@ export default {
     },
     series () {
       if (!this.context.component.slots || !this.context.component.slots.series) return undefined
-      return this.context.component.slots.series.map((s) => this.getSerie(s))
+      return this.context.component.slots.series.map((s, index) => this.getSerie(s, index))
     }
   },
   data () {
@@ -45,29 +47,17 @@ export default {
     this.ready = true
   },
   methods: {
-    serieConfig (component) {
+    getSerie (component, index) {
       const sourceConfig = component.config
       let evalConfig = {}
       if (component.config) {
         if (typeof component.config !== 'object') return {}
         for (const key in component.config) {
           if (key === 'visible' || key === 'visibleTo') continue
-          this.$set(evalConfig, key, this.evaluateExpression(key, sourceConfig[key]))
+          this.$set(evalConfig, key, this.evaluateExpression(key + "." + index, sourceConfig[key]))
         }
       }
       return evalConfig
-    },
-    value (component) {
-      const item = this.evaluateExpression("item", component.config.item)
-      const value = this.context.store[item].state
-      return parseFloat(value)
-    },
-    getSerie (component) {
-      const config = this.serieConfig(component) 
-      return {
-        ...config,
-        data: [{ value: this.value(component), name: this.evaluateExpression("name", component.config.name) }]
-      }
     }
   }
 }
