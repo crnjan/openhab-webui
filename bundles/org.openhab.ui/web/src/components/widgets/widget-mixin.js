@@ -95,12 +95,16 @@ export default {
         } catch (e) {
           return e
         }
-      } else if (typeof value === 'object' && !Array.isArray(value)) {
-        const evalObj = {}
-        for (const objKey in value) {
-          this.$set(evalObj, objKey, this.evaluateExpression(key + '.' + objKey, value[objKey]))
+      } else if (typeof value === 'object') {
+        if (Array.isArray(value)) {
+          return value.map((v, index) => this.evaluateExpression(key + '.' + index, v))
+        } else {
+          const evalObj = {}
+          for (const objKey in value) {
+            this.$set(evalObj, objKey, this.evaluateExpression(key + '.' + objKey, value[objKey]))
+          }
+          return evalObj
         }
-        return evalObj
       } else {
         return value
       }
