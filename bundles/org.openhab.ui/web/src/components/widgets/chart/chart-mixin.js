@@ -53,6 +53,7 @@ export default {
       return this.addOrSubtractPeriod(this.endTime, -1)
     },
     options () {
+      if (!this.config) return {}
       const chartConfig = this.config.options || {}
       return {
         ...chartConfig,

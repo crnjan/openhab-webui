@@ -1,5 +1,5 @@
 <template>
-  <oh-chart class="oh-chart-page-chart" :context="childContext(context.component)" />
+  <oh-chart class="oh-chart-page-chart" :context="this.context" />
 </template>
 
 <style lang="stylus">
